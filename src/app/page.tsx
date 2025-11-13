@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { CollectionsSidebar } from "@/components/features/collection-sidebar/collections-sidebar";
 import { MethodSelector } from "@/components/features/request-builder/method-selector";
 import { UrlInput } from "@/components/features/request-builder/url-input";
 import { QueryParams } from "@/components/features/request-builder/query-params";
@@ -56,8 +57,11 @@ export default function HomePage() {
 
       {/* Main Content */}
       <div className="flex flex-1 overflow-hidden">
+        {/* Collections Sidebar */}
+        <CollectionsSidebar />
+
         {/* Request Builder - Left Side */}
-        <div className="flex flex-col w-1/2 border-r overflow-auto">
+        <div className="flex flex-col flex-1 border-r overflow-auto">
           {/* URL Bar */}
           <div className="flex gap-2 p-4 border-b">
             <MethodSelector value={method} onChange={setMethod} />
@@ -88,7 +92,7 @@ export default function HomePage() {
         </div>
 
         {/* Response Viewer - Right Side */}
-        <div className="flex flex-col w-1/2 overflow-auto">
+        <div className="flex flex-col flex-1 overflow-auto">
           <ResponseViewer response={response} error={error} />
         </div>
       </div>

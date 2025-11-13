@@ -50,34 +50,34 @@ This is a **web application** using Next.js 14+ with App Router:
 - [x] T013 [P] Define TypeScript types in types/environment.ts: Environment, Variable, VariableScope
 - [x] T014 [P] Define TypeScript types in types/auth.ts: AuthType, AuthConfig, BearerAuth, BasicAuth, ApiKeyAuth, OAuth2Config
 - [x] T015 [P] Define TypeScript types in types/history.ts: HistoryEntry, HistoricalRequest, HistoricalResponse
-- [ ] T016 [P] Define TypeScript types in types/websocket.ts: WebSocketConnection, WSMessage, WebSocketStatus
-- [ ] T017 [P] Define TypeScript types in types/graphql.ts: GraphQLQuery
-- [ ] T018 [P] Define TypeScript types in types/test.ts: TestResult, TestStatus
-- [ ] T019 Create Dexie.js database schema in lib/db/schema.ts with all entities from data-model.md
-- [ ] T020 Implement encryption utilities in lib/storage/crypto.ts for auth credentials using Web Crypto API
-- [ ] T021 Create storage API for requests in lib/storage/requests.ts per contracts/storage-api.md
-- [ ] T022 [P] Create storage API for collections in lib/storage/collections.ts per contracts/storage-api.md
-- [ ] T023 [P] Create storage API for folders in lib/storage/folders.ts per contracts/storage-api.md
-- [ ] T024 [P] Create storage API for environments in lib/storage/environments.ts per contracts/storage-api.md
-- [ ] T025 [P] Create storage API for variables in lib/storage/variables.ts per contracts/storage-api.md
-- [ ] T026 [P] Create storage API for history in lib/storage/history.ts per contracts/storage-api.md
-- [ ] T027 [P] Create storage API for WebSocket in lib/storage/websockets.ts per contracts/storage-api.md
-- [ ] T028 [P] Create storage API for GraphQL in lib/storage/graphql.ts per contracts/storage-api.md
-- [ ] T029 Create Zustand store for UI state in stores/ui-store.ts: sidebar collapsed, active modal, theme
-- [ ] T030 [P] Create Zustand store for request builder in stores/request-store.ts: current request configuration
-- [ ] T031 [P] Create Zustand store for settings in stores/settings-store.ts: user preferences from LocalStorage
-- [ ] T032 Create React Query utilities in lib/http/query-client.ts: client configuration, cache settings
-- [ ] T033 Create HTTP client wrapper in lib/http/client.ts: Fetch API with interceptors per research.md
-- [ ] T034 Create variable resolver utility in lib/utils/variables.ts: resolve {{variableName}} syntax per FR-038
-- [ ] T035 Create URL validator utility in lib/utils/validation.ts: validate HTTP/HTTPS URLs per FR-002
-- [ ] T036 Create root layout in app/layout.tsx: providers (Zustand, React Query, theme), global styles
-- [ ] T037 Create Radix UI button component in components/ui/button.tsx with Tailwind variants
-- [ ] T038 [P] Create Radix UI input component in components/ui/input.tsx
-- [ ] T039 [P] Create Radix UI select component in components/ui/select.tsx
-- [ ] T040 [P] Create Radix UI dropdown component in components/ui/dropdown.tsx
-- [ ] T041 [P] Create Radix UI dialog component in components/ui/dialog.tsx
-- [ ] T042 [P] Create Radix UI tabs component in components/ui/tabs.tsx
-- [ ] T043 [P] Create Radix UI tooltip component in components/ui/tooltip.tsx
+- [x] T016 [P] Define TypeScript types in types/websocket.ts: WebSocketConnection, WSMessage, WebSocketStatus
+- [x] T017 [P] Define TypeScript types in types/graphql.ts: GraphQLQuery
+- [x] T018 [P] Define TypeScript types in types/test.ts: TestResult, TestStatus
+- [x] T019 Create Dexie.js database schema in lib/db/index.ts with all entities from data-model.md
+- [x] T020 Implement encryption utilities in lib/storage/crypto.ts for auth credentials using Web Crypto API
+- [x] T021 Create storage API for requests in lib/storage/requests.ts per contracts/storage-api.md
+- [x] T022 [P] Create storage API for collections in lib/storage/collections.ts per contracts/storage-api.md
+- [x] T023 [P] Create storage API for folders in lib/storage/folders.ts per contracts/storage-api.md
+- [x] T024 [P] Create storage API for environments in lib/storage/environments.ts per contracts/storage-api.md
+- [x] T025 [P] Create storage API for variables in lib/storage/variables.ts per contracts/storage-api.md
+- [x] T026 [P] Create storage API for history in lib/storage/history.ts per contracts/storage-api.md
+- [x] T027 [P] Create storage API for WebSocket in lib/storage/websockets.ts per contracts/storage-api.md
+- [x] T028 [P] Create storage API for GraphQL in lib/storage/graphql.ts per contracts/storage-api.md
+- [x] T029 Create Zustand store for UI state in stores/ui-store.ts: sidebar collapsed, active modal, theme
+- [x] T030 [P] Create Zustand store for request builder in stores/request-store.ts: current request configuration
+- [x] T031 [P] Create Zustand store for settings in stores/settings-store.ts: user preferences from LocalStorage
+- [x] T032 Create React Query utilities in lib/http/query-client.ts: client configuration, cache settings
+- [x] T033 Create HTTP client wrapper in lib/http/client.ts: Fetch API with interceptors per research.md
+- [x] T034 Create variable resolver utility in lib/utils/variables.ts: resolve {{variableName}} syntax per FR-038
+- [x] T035 Create URL validator utility in lib/utils/validation.ts: validate HTTP/HTTPS URLs per FR-002
+- [x] T036 Create root layout in app/layout.tsx: providers (Zustand, React Query, theme), global styles
+- [x] T037 Create Radix UI button component in components/ui/button.tsx with Tailwind variants
+- [x] T038 [P] Create Radix UI input component in components/ui/input.tsx
+- [x] T039 [P] Create Radix UI select component in components/ui/select.tsx
+- [x] T040 [P] Create Radix UI dropdown component in components/ui/dropdown-menu.tsx
+- [x] T041 [P] Create Radix UI dialog component in components/ui/dialog.tsx
+- [x] T042 [P] Create Radix UI tabs component in components/ui/tabs.tsx
+- [x] T043 [P] Create Radix UI tooltip component in components/ui/tooltip.tsx
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -122,15 +122,15 @@ This is a **web application** using Next.js 14+ with App Router:
 
 ### Implementation for User Story 2
 
-- [ ] T062 [P] [US2] Create collections sidebar in components/features/collection-sidebar/collections-sidebar.tsx with tree view per FR-025
-- [ ] T063 [P] [US2] Create collection tree node component in components/features/collection-sidebar/collection-node.tsx with expand/collapse
-- [ ] T064 [P] [US2] Create folder tree node component in components/features/collection-sidebar/folder-node.tsx
-- [ ] T065 [P] [US2] Create request tree node component in components/features/collection-sidebar/request-node.tsx
-- [ ] T066 [US2] Create "New Collection" dialog in components/features/collection-sidebar/new-collection-dialog.tsx per FR-025
-- [ ] T067 [US2] Create "Save to Collection" dialog in components/features/request-builder/save-to-collection-dialog.tsx per FR-026
-- [ ] T068 [US2] Create "New Folder" dialog in components/features/collection-sidebar/new-folder-dialog.tsx per FR-027
-- [ ] T069 [US2] Implement collections management hook in hooks/use-collections.ts: create, rename, delete, duplicate per FR-025, FR-028
-- [ ] T070 [US2] Implement folder management with 3-level nesting validation in hooks/use-folders.ts per FR-027
+- [x] T062 [P] [US2] Create collections sidebar in components/features/collection-sidebar/collections-sidebar.tsx with tree view per FR-025
+- [x] T063 [P] [US2] Create collection tree node component in components/features/collection-sidebar/collection-node.tsx with expand/collapse
+- [x] T064 [P] [US2] Create folder tree node component in components/features/collection-sidebar/folder-node.tsx
+- [x] T065 [P] [US2] Create request tree node component in components/features/collection-sidebar/request-node.tsx
+- [x] T066 [US2] Create "New Collection" dialog in components/features/collection-sidebar/new-collection-dialog.tsx per FR-025
+- [x] T067 [US2] Create "Save to Collection" dialog in components/features/request-builder/save-to-collection-dialog.tsx per FR-026
+- [x] T068 [US2] Create "New Folder" dialog in components/features/collection-sidebar/new-folder-dialog.tsx per FR-027
+- [x] T069 [US2] Implement collections management hook in hooks/use-collections.ts: create, rename, delete, duplicate per FR-025, FR-028
+- [x] T070 [US2] Implement folder management with 3-level nesting validation in hooks/use-folders.ts per FR-027
 - [ ] T071 [US2] Create collection search component in components/features/collection-sidebar/collection-search.tsx with <200ms filter per FR-029, FR-034
 - [ ] T072 [US2] Implement Postman v2.1 import parser in lib/importers/postman-importer.ts with 100% compatibility per FR-030
 - [ ] T073 [US2] Implement Postman v2.1 export generator in lib/exporters/postman-exporter.ts per FR-031

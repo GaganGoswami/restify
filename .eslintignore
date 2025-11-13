@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Generated files
+*.min.js
+*.bundle.js
+
+# Configuration files
+next-env.d.ts
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
