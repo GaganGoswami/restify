@@ -11,21 +11,24 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { useCollections } from "@/hooks/use-collections";
 
 interface NewCollectionDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onCreate: (name: string) => void;
+  onCreate?: () => void;
 }
 
 export function NewCollectionDialog({ open, onOpenChange, onCreate }: NewCollectionDialogProps) {
   const [name, setName] = useState("");
+  const { create, isCreating } = useCollections();
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     if (name.trim()) {
-      onCreate(name.trim());
+      await create(name.trim());
       setName("");
       onOpenChange(false);
+      onCreate?.();
     }
   };
 
@@ -58,8 +61,8 @@ export function NewCollectionDialog({ open, onOpenChange, onCreate }: NewCollect
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
-          <Button onClick={handleCreate} disabled={!name.trim()}>
-            Create
+          <Button onClick={handleCreate} disabled={!name.trim() || isCreating}>
+            {isCreating ? "Creating..." : "Create"}
           </Button>
         </DialogFooter>
       </DialogContent>

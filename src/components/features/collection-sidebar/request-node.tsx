@@ -9,14 +9,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { db } from "@/lib/db";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface RequestNodeProps {
   request: Request;
   depth?: number;
-  onSelect?: (id: string) => void;
-  onDuplicate?: (id: string) => void;
-  onMove?: (id: string) => void;
-  onDelete?: (id: string) => void;
+  onSelect?: (request: Request) => void;
 }
 
 const METHOD_COLORS: Record<string, string> = {
@@ -29,19 +28,32 @@ const METHOD_COLORS: Record<string, string> = {
   OPTIONS: "text-gray-600 bg-gray-100 dark:bg-gray-900/30",
 };
 
-export function RequestNode({
-  request,
-  depth = 0,
-  onSelect,
-  onDuplicate,
-  onMove,
-  onDelete,
-}: RequestNodeProps) {
+export function RequestNode({ request, depth = 0, onSelect }: RequestNodeProps) {
+  const queryClient = useQueryClient();
+
+  const handleDuplicate = async () => {
+    const newRequest = {
+      ...request,
+      id: crypto.randomUUID(),
+      name: `${request.name} (Copy)`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    await db.requests.add(newRequest);
+    queryClient.invalidateQueries({ queryKey: ["collections"] });
+  };
+
+  const handleDelete = async () => {
+    if (confirm(`Delete "${request.name}"?`)) {
+      await db.requests.delete(request.id);
+      queryClient.invalidateQueries({ queryKey: ["collections"] });
+    }
+  };
   return (
     <div
       className="group flex items-center gap-2 rounded px-2 py-1.5 hover:bg-accent cursor-pointer"
       style={{ paddingLeft: `${depth * 12 + 24}px` }}
-      onClick={() => onSelect?.(request.id)}
+      onClick={() => onSelect?.(request)}
     >
       {/* Method Badge */}
       <span
@@ -67,7 +79,7 @@ export function RequestNode({
           <DropdownMenuItem
             onClick={(e) => {
               e.stopPropagation();
-              onSelect?.(request.id);
+              onSelect?.(request);
             }}
           >
             Open
@@ -75,7 +87,7 @@ export function RequestNode({
           <DropdownMenuItem
             onClick={(e) => {
               e.stopPropagation();
-              onDuplicate?.(request.id);
+              handleDuplicate();
             }}
           >
             Duplicate
@@ -83,7 +95,7 @@ export function RequestNode({
           <DropdownMenuItem
             onClick={(e) => {
               e.stopPropagation();
-              onMove?.(request.id);
+              // TODO: Implement move to folder
             }}
           >
             Move to Folder
@@ -93,7 +105,7 @@ export function RequestNode({
             className="text-destructive"
             onClick={(e) => {
               e.stopPropagation();
-              onDelete?.(request.id);
+              handleDelete();
             }}
           >
             Delete

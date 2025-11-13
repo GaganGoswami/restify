@@ -20,6 +20,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { importPostmanCollection } from "@/lib/importers/postman-importer";
+import { importOpenAPISpec } from "@/lib/importers/openapi-importer";
+import { importCurlCommand } from "@/lib/importers/curl-importer";
 import { db } from "@/lib/db";
 
 interface ImportDialogProps {
@@ -56,7 +58,26 @@ export function ImportDialog({ open, onOpenChange, onImportComplete }: ImportDia
     try {
       const content = await file.text();
 
+      // Validate JSON format first
+      try {
+        JSON.parse(content);
+      } catch {
+        throw new Error("Invalid JSON format. Please check your file.");
+      }
+
       if (format === "postman") {
+        // Validate before import
+        const parsed = JSON.parse(content);
+        if (!parsed.info || !parsed.info.name) {
+          throw new Error("Invalid Postman collection: missing collection name");
+        }
+        if (
+          !parsed.info.schema ||
+          (!parsed.info.schema.includes("v2.1") && !parsed.info.schema.includes("v2.0"))
+        ) {
+          throw new Error("Only Postman Collection v2.0 and v2.1 are supported");
+        }
+
         const { collection, requests, folders } = await importPostmanCollection(content);
 
         // Save to database
@@ -71,9 +92,51 @@ export function ImportDialog({ open, onOpenChange, onImportComplete }: ImportDia
         setFile(null);
         setFormat("postman");
       } else if (format === "openapi") {
-        setError("OpenAPI import is not yet implemented");
+        // Validate OpenAPI spec
+        const parsed = JSON.parse(content);
+        if (!parsed.openapi) {
+          throw new Error("Invalid OpenAPI specification: missing 'openapi' field");
+        }
+        if (!parsed.openapi.startsWith("3.")) {
+          throw new Error("Only OpenAPI 3.x specifications are supported");
+        }
+        if (!parsed.info || !parsed.info.title) {
+          throw new Error("Invalid OpenAPI specification: missing 'info.title'");
+        }
+
+        const { collection, requests, folders } = await importOpenAPISpec(content);
+
+        // Save to database
+        await db.collections.add(collection);
+        await db.folders.bulkAdd(folders);
+        await db.requests.bulkAdd(requests);
+
+        onImportComplete?.();
+        onOpenChange(false);
+
+        // Reset state
+        setFile(null);
+        setFormat("postman");
       } else if (format === "curl") {
-        setError("cURL import is not yet implemented");
+        // Validate cURL command
+        if (!content.trim().startsWith("curl")) {
+          throw new Error("Invalid cURL command: must start with 'curl'");
+        }
+        if (!content.includes("http://") && !content.includes("https://")) {
+          throw new Error("Invalid cURL command: missing URL");
+        }
+
+        const request = await importCurlCommand(content);
+
+        // Save single request to database
+        await db.requests.add(request);
+
+        onImportComplete?.();
+        onOpenChange(false);
+
+        // Reset state
+        setFile(null);
+        setFormat("postman");
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to import collection");
