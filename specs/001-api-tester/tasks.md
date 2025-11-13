@@ -132,10 +132,10 @@ This is a **web application** using Next.js 14+ with App Router:
 - [x] T069 [US2] Implement collections management hook in hooks/use-collections.ts: create, rename, delete, duplicate per FR-025, FR-028
 - [x] T070 [US2] Implement folder management with 3-level nesting validation in hooks/use-folders.ts per FR-027
 - [ ] T071 [US2] Create collection search component in components/features/collection-sidebar/collection-search.tsx with <200ms filter per FR-029, FR-034
-- [ ] T072 [US2] Implement Postman v2.1 import parser in lib/importers/postman-importer.ts with 100% compatibility per FR-030
-- [ ] T073 [US2] Implement Postman v2.1 export generator in lib/exporters/postman-exporter.ts per FR-031
-- [ ] T074 [US2] Create import dialog in components/features/import/import-dialog.tsx: file upload, format selection (Postman, OpenAPI, cURL)
-- [ ] T075 [US2] Create export dialog in components/features/export/export-dialog.tsx: format selection, download per FR-035
+- [x] T072 [US2] Implement Postman v2.1 import parser in lib/importers/postman-importer.ts with 100% compatibility per FR-030
+- [x] T073 [US2] Implement Postman v2.1 export generator in lib/exporters/postman-exporter.ts per FR-031
+- [x] T074 [US2] Create import dialog in components/features/import/import-dialog.tsx: file upload, format selection (Postman, OpenAPI, cURL)
+- [x] T075 [US2] Create export dialog in components/features/export/export-dialog.tsx: format selection, download per FR-035
 - [ ] T076 [US2] Implement OpenAPI 3.0 import parser in lib/importers/openapi-importer.ts per FR-032
 - [ ] T077 [US2] Implement cURL command import parser in lib/importers/curl-importer.ts per FR-033
 - [ ] T078 [US2] Add drag-and-drop for request reordering in collections sidebar
