@@ -16,6 +16,7 @@
 ## Path Conventions
 
 This is a **web application** using Next.js 14+ with App Router:
+
 - Frontend components: `app/`, `components/`, `lib/`, `hooks/`, `stores/`, `types/`
 - No backend - all client-side execution per constitution
 
@@ -25,16 +26,16 @@ This is a **web application** using Next.js 14+ with App Router:
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create Next.js 14.2+ project with TypeScript 5.3+ using `pnpm create next-app@latest`
-- [ ] T002 [P] Install core dependencies: Tailwind CSS 3.4+, Zustand, TanStack Query, Dexie.js per plan.md
-- [ ] T003 [P] Install UI dependencies: Radix UI, Lucide React, Framer Motion, Monaco Editor
-- [ ] T004 [P] Configure TypeScript strict mode in tsconfig.json
-- [ ] T005 [P] Configure Tailwind CSS with dark mode support in tailwind.config.ts
-- [ ] T006 [P] Setup ESLint with strict rules and Prettier in .eslintrc.json
-- [ ] T007 [P] Configure Vitest for unit testing in vitest.config.ts
-- [ ] T008 [P] Configure Playwright for E2E testing in playwright.config.ts
-- [ ] T009 [P] Setup Husky pre-commit hooks for linting and type checking
-- [ ] T010 Create project directory structure per plan.md: app/, components/ui/, components/features/, lib/, hooks/, stores/, types/
+- [x] T001 Create Next.js 14.2+ project with TypeScript 5.3+ using `pnpm create next-app@latest`
+- [x] T002 [P] Install core dependencies: Tailwind CSS 3.4+, Zustand, TanStack Query, Dexie.js per plan.md
+- [x] T003 [P] Install UI dependencies: Radix UI, Lucide React, Framer Motion, Monaco Editor
+- [x] T004 [P] Configure TypeScript strict mode in tsconfig.json
+- [x] T005 [P] Configure Tailwind CSS with dark mode support in tailwind.config.ts
+- [x] T006 [P] Setup ESLint with strict rules and Prettier in .eslintrc.json
+- [x] T007 [P] Configure Vitest for unit testing in vitest.config.ts
+- [x] T008 [P] Configure Playwright for E2E testing in playwright.config.ts
+- [x] T009 [P] Setup Husky pre-commit hooks for linting and type checking
+- [x] T010 Create project directory structure per plan.md: app/, components/ui/, components/features/, lib/, hooks/, stores/, types/
 
 ---
 
@@ -44,11 +45,11 @@ This is a **web application** using Next.js 14+ with App Router:
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T011 Define TypeScript types in types/request.ts: HttpMethod, Request, RequestBody, QueryParam, Header, KeyValuePair
-- [ ] T012 [P] Define TypeScript types in types/collection.ts: Collection, Folder
-- [ ] T013 [P] Define TypeScript types in types/environment.ts: Environment, Variable, VariableScope
-- [ ] T014 [P] Define TypeScript types in types/auth.ts: AuthType, AuthConfig, BearerAuth, BasicAuth, ApiKeyAuth, OAuth2Config
-- [ ] T015 [P] Define TypeScript types in types/history.ts: HistoryEntry, HistoricalRequest, HistoricalResponse
+- [x] T011 Define TypeScript types in types/request.ts: HttpMethod, Request, RequestBody, QueryParam, Header, KeyValuePair
+- [x] T012 [P] Define TypeScript types in types/collection.ts: Collection, Folder
+- [x] T013 [P] Define TypeScript types in types/environment.ts: Environment, Variable, VariableScope
+- [x] T014 [P] Define TypeScript types in types/auth.ts: AuthType, AuthConfig, BearerAuth, BasicAuth, ApiKeyAuth, OAuth2Config
+- [x] T015 [P] Define TypeScript types in types/history.ts: HistoryEntry, HistoricalRequest, HistoricalResponse
 - [ ] T016 [P] Define TypeScript types in types/websocket.ts: WebSocketConnection, WSMessage, WebSocketStatus
 - [ ] T017 [P] Define TypeScript types in types/graphql.ts: GraphQLQuery
 - [ ] T018 [P] Define TypeScript types in types/test.ts: TestResult, TestStatus
@@ -90,22 +91,22 @@ This is a **web application** using Next.js 14+ with App Router:
 
 ### Implementation for User Story 1
 
-- [ ] T044 [P] [US1] Create HTTP method selector component in components/features/request-builder/method-selector.tsx
-- [ ] T045 [P] [US1] Create URL input component in components/features/request-builder/url-input.tsx with validation per FR-002
-- [ ] T046 [P] [US1] Create query params editor in components/features/request-builder/query-params.tsx with key-value pairs per FR-003
-- [ ] T047 [P] [US1] Create headers editor in components/features/request-builder/headers-editor.tsx with key-value pairs per FR-004
-- [ ] T048 [US1] Create request body editor in components/features/request-builder/body-editor.tsx with type selector (JSON, form data, raw, binary) per FR-006
-- [ ] T049 [US1] Integrate Monaco Editor for JSON body in components/features/request-builder/json-editor.tsx with syntax highlighting per FR-007
-- [ ] T050 [US1] Create Send button component in components/features/request-builder/send-button.tsx with keyboard shortcut (Cmd/Ctrl+Enter) per FR-083
-- [ ] T051 [US1] Implement HTTP request execution hook in hooks/use-request.ts using React Query and HTTP client per FR-008
-- [ ] T052 [US1] Create response viewer component in components/features/response-viewer/response-viewer.tsx with tabs for Body, Headers, Test Results
-- [ ] T053 [US1] Create response body renderer in components/features/response-viewer/response-body.tsx with pretty-printed JSON per FR-016
-- [ ] T054 [P] [US1] Create response metadata display in components/features/response-viewer/response-metadata.tsx: status code (color-coded per FR-024), response time, size per FR-017
-- [ ] T055 [P] [US1] Create response headers viewer in components/features/response-viewer/response-headers.tsx per FR-023
-- [ ] T056 [US1] Add copy to clipboard functionality in components/features/response-viewer/copy-button.tsx per FR-020
-- [ ] T057 [US1] Add download response functionality in components/features/response-viewer/download-button.tsx per FR-021
-- [ ] T058 [US1] Create main request builder page in app/page.tsx: layout with method selector, URL input, tabs for params/headers/body, Send button, response viewer
-- [ ] T059 [US1] Add error handling for network errors, timeouts, DNS failures per edge cases
+- [x] T044 [P] [US1] Create HTTP method selector component in components/features/request-builder/method-selector.tsx
+- [x] T045 [P] [US1] Create URL input component in components/features/request-builder/url-input.tsx with validation per FR-002
+- [x] T046 [P] [US1] Create query params editor in components/features/request-builder/query-params.tsx with key-value pairs per FR-003
+- [x] T047 [P] [US1] Create headers editor in components/features/request-builder/headers-editor.tsx with key-value pairs per FR-004
+- [x] T048 [US1] Create request body editor in components/features/request-builder/body-editor.tsx with type selector (JSON, form data, raw, binary) per FR-006
+- [x] T049 [US1] Integrate Monaco Editor for JSON body in components/features/request-builder/json-editor.tsx with syntax highlighting per FR-007
+- [x] T050 [US1] Create Send button component in components/features/request-builder/send-button.tsx with keyboard shortcut (Cmd/Ctrl+Enter) per FR-083
+- [x] T051 [US1] Implement HTTP request execution hook in hooks/use-request.ts using React Query and HTTP client per FR-008
+- [x] T052 [US1] Create response viewer component in components/features/response-viewer/response-viewer.tsx with tabs for Body, Headers, Test Results
+- [x] T053 [US1] Create response body renderer in components/features/response-viewer/response-body.tsx with pretty-printed JSON per FR-016
+- [x] T054 [P] [US1] Create response metadata display in components/features/response-viewer/response-metadata.tsx: status code (color-coded per FR-024), response time, size per FR-017
+- [x] T055 [P] [US1] Create response headers viewer in components/features/response-viewer/response-headers.tsx per FR-023
+- [x] T056 [US1] Add copy to clipboard functionality in components/features/response-viewer/copy-button.tsx per FR-020
+- [x] T057 [US1] Add download response functionality in components/features/response-viewer/download-button.tsx per FR-021
+- [x] T058 [US1] Create main request builder page in app/page.tsx: layout with method selector, URL input, tabs for params/headers/body, Send button, response viewer
+- [x] T059 [US1] Add error handling for network errors, timeouts, DNS failures per edge cases
 - [ ] T060 [US1] Implement large response handling (>10MB) with virtualization per FR-019 to prevent UI freeze
 - [ ] T061 [US1] Add JSON response search functionality in components/features/response-viewer/response-search.tsx per FR-022
 
@@ -290,7 +291,8 @@ This is a **web application** using Next.js 14+ with App Router:
 
 **Goal**: Expand tool to support WebSocket connections and GraphQL queries alongside REST APIs
 
-**Independent Test**: 
+**Independent Test**:
+
 - **WebSocket**: Connect to wss://echo.websocket.org, send "Hello", verify message appears in sent list and response received within 50ms with timestamp
 - **GraphQL**: Load schema from GraphQL endpoint, write query with autocomplete, execute successfully with formatted JSON response
 
