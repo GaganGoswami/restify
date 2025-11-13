@@ -155,18 +155,18 @@ This is a **web application** using Next.js 14+ with App Router:
 
 ### Implementation for User Story 3
 
-- [ ] T082 [P] [US3] Create environment selector dropdown in components/features/environment-selector/environment-selector.tsx in app header per FR-044
-- [ ] T083 [P] [US3] Create environment management dialog in components/features/environment-selector/manage-environments-dialog.tsx per FR-036
-- [ ] T084 [US3] Create environment editor in components/features/environment-selector/environment-editor.tsx: add/edit/delete variables per FR-037
-- [ ] T085 [US3] Implement variable scope indicator in components/features/environment-selector/variable-scope-badge.tsx: Global, Environment, Collection per FR-041
-- [ ] T086 [US3] Implement environments hook in hooks/use-environments.ts: create, switch, delete with <100ms response per FR-043
-- [ ] T087 [US3] Implement variables hook in hooks/use-variables.ts: CRUD operations, precedence resolution per FR-042
+- [x] T082 [P] [US3] Create environment selector dropdown in components/features/environment-selector/environment-selector.tsx in app header per FR-044
+- [x] T083 [P] [US3] Create environment management dialog in components/features/environment-selector/manage-environments-dialog.tsx per FR-036
+- [x] T084 [US3] Create environment editor in components/features/environment-selector/environment-editor.tsx: add/edit/delete variables per FR-037
+- [x] T085 [US3] Implement variable scope indicator in components/features/environment-selector/variable-scope-badge.tsx: Global, Environment, Collection per FR-041
+- [x] T086 [US3] Implement environments hook in hooks/use-environments.ts: create, switch, delete with <100ms response per FR-043
+- [x] T087 [US3] Implement variables hook in hooks/use-variables.ts: CRUD operations, precedence resolution per FR-042
 - [ ] T088 [US3] Add real-time variable resolution in URL input: highlight {{variableName}} syntax, show resolved value tooltip per FR-039
 - [ ] T089 [US3] Add variable syntax highlighting in Monaco Editor for request body per FR-038
 - [ ] T090 [US3] Implement unresolved variable warnings in components/features/request-builder/variable-warning.tsx per FR-040
 - [ ] T091 [US3] Add variable autocomplete in URL input when typing {{ per FR-039
 - [ ] T092 [US3] Add quick variable picker in headers and query params for inserting {{variableName}}
-- [ ] T093 [US3] Implement variable precedence resolution in lib/utils/variables.ts: Collection > Environment > Global per FR-042
+- [x] T093 [US3] Implement variable precedence resolution in lib/utils/variables.ts: Collection > Environment > Global per FR-042
 - [ ] T094 [US3] Add environment quick switcher keyboard shortcut (Cmd/Ctrl+E)
 - [ ] T095 [US3] Handle edge case: undefined variable resolution in requests with clear error messaging
 

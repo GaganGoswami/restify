@@ -10,6 +10,8 @@ import { HeadersEditor } from "@/components/features/request-builder/headers-edi
 import { BodyEditor } from "@/components/features/request-builder/body-editor";
 import { SendButton } from "@/components/features/request-builder/send-button";
 import { ResponseViewer } from "@/components/features/response-viewer/response-viewer";
+import { EnvironmentSelector } from "@/components/features/environment-selector/environment-selector";
+import { ManageEnvironmentsDialog } from "@/components/features/environment-selector/manage-environments-dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useExecuteRequest } from "@/hooks/use-request";
 import { useRequestStore } from "@/stores/request-store";
@@ -28,6 +30,7 @@ export default function HomePage() {
     type: "none",
     content: "",
   });
+  const [showManageEnvironments, setShowManageEnvironments] = useState(false);
 
   const handleSend = () => {
     if (!url || !isUrlValid) return;
@@ -50,9 +53,12 @@ export default function HomePage() {
   return (
     <main className="flex h-screen flex-col">
       {/* Header */}
-      <div className="border-b px-6 py-4">
-        <h1 className="text-2xl font-bold">Restify</h1>
-        <p className="text-sm text-muted-foreground">REST API Testing Tool</p>
+      <div className="border-b px-6 py-4 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Restify</h1>
+          <p className="text-sm text-muted-foreground">REST API Testing Tool</p>
+        </div>
+        <EnvironmentSelector onManage={() => setShowManageEnvironments(true)} />
       </div>
 
       {/* Main Content */}
@@ -96,6 +102,12 @@ export default function HomePage() {
           <ResponseViewer response={response} error={error} />
         </div>
       </div>
+
+      {/* Manage Environments Dialog */}
+      <ManageEnvironmentsDialog
+        open={showManageEnvironments}
+        onOpenChange={setShowManageEnvironments}
+      />
     </main>
   );
 }
